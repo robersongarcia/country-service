@@ -1,7 +1,9 @@
 const { Pool } = require('pg')
+const os = require('os')
+const hostname = os.hostname()
 
 const pool = new Pool({
-    host: 'app-and-db',
+    host: hostname,
     port: 5432,
     user: 'user123',
     password: 'password123',
