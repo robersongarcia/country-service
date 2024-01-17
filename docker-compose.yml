@@ -1,6 +1,6 @@
 version: "3"
 services:
-  db:
+  app-and-db:
     image: postgres:15.1
     restart: always
     environment:
@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     restart: always
-    image: country-service
+    image: robersongarcia/country-service
     ports:
       - "8080:8080"
     environment:
