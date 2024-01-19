@@ -3,7 +3,7 @@ const os = require('os')
 const hostname = os.hostname()
 
 const pool = new Pool({
-    host: hostname,
+    host: process.env.DBHOST || 'localhost',
     port: 5432,
     user: 'user123',
     password: 'password123',

@@ -1,34 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-and-db-deployment
+  name: app-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-and-db
+      app: app
   template:
     metadata:
       labels:
-        app: app-and-db
+        app: app
     spec:
       restartPolicy: Always
       containers:
-      - name: db
-        image: postgres:15.1
-        env:
-        - name: POSTGRES_DB
-          value: db123
-        - name: POSTGRES_USER
-          value: user123
-        - name: POSTGRES_PASSWORD
-          value: password123
-        ports:
-        - containerPort: 5432
       - name: app
         image: robersongarcia/country-service
         env:
         - name: PORT
           value: "8080"
+        - name: DBHOST
+          value: 10.105.52.68
         ports:
         - containerPort: 8080

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bd-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bd
+  template:
+    metadata:
+      labels:
+        app: bd
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: db
+        image: postgres:15.1
+        env:
+        - name: POSTGRES_DB
+          value: db123
+        - name: POSTGRES_USER
+          value: user123
+        - name: POSTGRES_PASSWORD
+          value: password123
+        ports:
+        - containerPort: 5432

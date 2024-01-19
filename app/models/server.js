@@ -13,7 +13,7 @@ class Server {
     constructor() {
         this.app = express()
         this.accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
-        this.port = process.env.PORT
+        this.port = 8080
         this.countryPath = '/api/country'
         this.middlewares()
         this.routes()
